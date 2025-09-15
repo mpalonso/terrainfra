@@ -1,6 +1,9 @@
 #!/bin/sh
-pip install flask
-cat > app.py <<'PYCODE'
+set -e
+
+pip install --no-cache-dir flask
+
+cat > /app.py <<'PYCODE'
 from flask import Flask, jsonify
 import json
 
@@ -21,4 +24,4 @@ if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)
 PYCODE
 
-python app.py
+python /app.py
