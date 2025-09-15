@@ -1,0 +1,10 @@
+
+services:
+  tf:
+    image: hashicorp/terraform:1.9
+    working_dir: /workspace/terraform
+    entrypoint: ["sh","-lc","sleep infinity"]  # nos deja entrar y ejecutar terraform
+    volumes:
+      - ./terraform:/workspace/terraform
+      - /var/run/docker.sock:/var/run/docker.sock  # imprescindible para que el provider docker hable con el daemon
+    restart: unless-stopped
